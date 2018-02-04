@@ -13,31 +13,36 @@ MicroBit uBit;
 
 int initTime = uBit.systemTime();
 
+void staticEight() {
+        while ( true ) {
+            if ( uBit.buttonA.isPressed() ) {
+                uBit.sleep(1000);
+                uBit.soundmotor.motorAOn(60);
+                uBit.sleep(1000);
+                uBit.soundmotor.motorAOff();
+                uBit.soundmotor.motorBOn(100);
+                uBit.sleep(1000);
+                uBit.soundmotor.motorAOn(100);
+                uBit.sleep(2000);
+                uBit.soundmotor.motorBOff();
+                uBit.soundmotor.motorAOff();
+                uBit.sleep(1000);
+                uBit.soundmotor.motorAOn(80);
+                uBit.soundmotor.motorBOn(50);
+                uBit.sleep(3000);
+                uBit.soundmotor.motorAOff();
+                uBit.sleep(500);
+                uBit.soundmotor.motorBOff();
+                uBit.sleep(2000);
+            }
+            uBit.sleep(1);
+        }
+}
+
 int main()
 {
     uBit.init();
-
-    //uBit.rgb.setColour(MicroBitColor(255, 0, 0, 255));
-    uBit.display.setDisplayMode(DISPLAY_MODE_GREYSCALE);
-    uBit.display.print(MicroBitImage("255,255,255,255,255\n255,0,0,0,255\n255,0,0,0,255\n255,0,0,0,255\n255,255,255,255,255\n"));
-    while ( true ) {
-        if ( uBit.buttonA.isPressed() ) {
-            uBit.soundmotor.motorAOn(60);
-            uBit.soundmotor.motorBOn(60);
-            uBit.sleep(1000);
-            uBit.soundmotor.motorAOff();
-            uBit.sleep(1000);
-            uBit.soundmotor.motorBOff();
-            uBit.soundmotor.motorAOn(60);
-            uBit.sleep(1000);
-            uBit.soundmotor.motorBOn(60);
-            uBit.sleep(1000);
-            uBit.soundmotor.motorAOff();
-            uBit.soundmotor.motorBOff();
-            uBit.sleep(1000);
-        }
-        uBit.sleep(1);
-    }
+    staticEight();
     release_fiber();
 }
 
